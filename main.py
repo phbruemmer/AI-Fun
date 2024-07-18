@@ -1,7 +1,7 @@
 import random
 import numpy as np
 
-inputs = [9, 9]
+inputs = [10, 9]
 goal = inputs[0] + inputs[1]
 
 
@@ -13,7 +13,7 @@ def main():
     weights = [random.uniform(-1, 1), random.uniform(-1, 1)]
     learning_rate = 0.01
 
-    for i in range(1000):
+    for i in range(1000000):
         out = calculate_output(inputs, weights)
         error = goal - out
 
