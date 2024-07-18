@@ -1,13 +1,7 @@
 import random
 import numpy as np
 
-"""
-# # #
-TRY - without much knowledge about numpy and neural networks :P
-# # #
-"""
-
-inputs = [2, 2]
+inputs = [9, 9]
 goal = inputs[0] + inputs[1]
 
 
@@ -16,18 +10,20 @@ def calculate_output(inputs_, weights_):
 
 
 def main():
-    i = 0
-    weights = [random.randint(-inputs[0], inputs[1]), random.randint(-inputs[0], inputs[1])]
+    weights = [random.uniform(-1, 1), random.uniform(-1, 1)]
+    learning_rate = 0.01
 
-    while not i == 100:
-
+    for i in range(1000):
         out = calculate_output(inputs, weights)
+        error = goal - out
 
-        print(i)
-        if out == goal:
-            i += 1
-        else:
-            i -= 1
+        weights[0] += learning_rate * error * inputs[0]
+        weights[1] += learning_rate * error * inputs[1]
+
+        print(f"Iteration {i + 1}, Weights: {weights}, Output: {out}, Error: {error}")
+
+        if abs(error) < 1e-6:
+            break
 
 
 if __name__ == "__main__":
