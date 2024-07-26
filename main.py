@@ -1,8 +1,14 @@
 import random
 import numpy as np
 
-inputs = [10, 9]
+inputs = [10, 10]
 goal = inputs[0] + inputs[1]
+
+
+def TEST_CASE():
+    weights = [np.float64(0.7538583476227256), np.float64(1.2461416472535665)]
+    out = calculate_output(inputs, weights)
+    print(out)
 
 
 def calculate_output(inputs_, weights_):
@@ -11,9 +17,9 @@ def calculate_output(inputs_, weights_):
 
 def main():
     weights = [random.uniform(-1, 1), random.uniform(-1, 1)]
-    learning_rate = 0.01
+    learning_rate = 0.0001
 
-    for i in range(1000000):
+    for i in range(1000):
         out = calculate_output(inputs, weights)
         error = goal - out
 
@@ -27,4 +33,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    TEST_CASE()
